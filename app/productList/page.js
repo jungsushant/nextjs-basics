@@ -8,6 +8,7 @@ const page = () => {
     <div>
       page
       <br />
+      <button onClick={() => navigate.push((href = "/"))}>Go to Home</button>
     </div>
   );
 };
