@@ -1,31 +1,24 @@
-"use client";
+import Link from "next/link";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-const page = () => {
-  const navigate = useRouter();
-  const [ddata, setData] = useState([]);
-
-  useEffect(() => {
-    async function fetchData() {
-      let data = await fetch("https://dummyjson.com/products");
-      data = await data.json();
-      setData(data.products);
-    }
-    fetchData();
-  }, []);
+const page = async () => {
+  let products = await productList();
+  console.log(products);
 
   return (
     <div>
-      page
+      <h1>Server component data fetching</h1>
       <br />
-      <button onClick={() => navigate.push("/")}>Go to Home</button>
-      {ddata.map((item) => {
-        return <h1 key={item.id}>{item.title}</h1>;
-      })}
+      <button>
+        <Link href="/">Go to Home</Link>
+      </button>
     </div>
   );
 };
 
 export default page;
+
+async function productList() {
+  let data = await fetch("https://dummyjson.com/products");
+  data = await data.json();
+  return data.products;
+}
