@@ -1,17 +1,11 @@
-import Link from "next/link";
-
+import Product from "./product";
 const page = async () => {
   let products = await productList();
-  console.log(products);
 
   return (
-    <div>
-      <h1>Server component data fetching</h1>
-      <br />
-      <button>
-        <Link href="/">Go to Home</Link>
-      </button>
-    </div>
+    <>
+      <Product products={products} />
+    </>
   );
 };
 
