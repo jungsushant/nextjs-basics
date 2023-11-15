@@ -14,7 +14,7 @@ const Product = ({ products }) => {
       </button>
       {products.map((product) => (
         <div key={product.id}>
-          <h1>{product.title}</h1> <br />{" "}
+          <h1>{product.title}</h1> <br />
           <button onClick={() => router.push(product.thumbnail)}>
             {product.thumbnail}
           </button>
